@@ -9,7 +9,7 @@ const opts: Parameters<typeof defineConfig>[0] = {
 			cssModules: true,
 		},
 	},
-	base: "/",
+	base: "/webruler",
 };
 
 // https://vite.dev/config/
