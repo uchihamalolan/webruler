@@ -3,7 +3,6 @@ import { CM_CALIBRATION_LENGTH, INCH_CALIBRATION_LENGTH } from "../lib/constants
 import type { Unit } from "../types";
 
 type UseCalibrationResult = {
-	scale: number;
 	isCalibrationOpen: boolean;
 	calibrationUnit: Unit;
 	actualLengthInput: string;
@@ -15,8 +14,11 @@ type UseCalibrationResult = {
 	applyCalibration: () => void;
 };
 
-export function useCalibration(dpi: number, unit: Unit): UseCalibrationResult {
-	const [scale, setScale] = useState(1);
+export function useCalibration(
+	dpi: number,
+	unit: Unit,
+	onScaleChange: (scale: number) => void,
+): UseCalibrationResult {
 	const [isCalibrationOpen, setIsCalibrationOpen] = useState(false);
 	const [calibrationUnit, setCalibrationUnit] = useState<Unit>("cm");
 	const [actualLengthInput, setActualLengthInput] = useState(
@@ -68,12 +70,11 @@ export function useCalibration(dpi: number, unit: Unit): UseCalibrationResult {
 			return;
 		}
 
-		setScale(referenceLinePx / expectedPx);
+		onScaleChange(referenceLinePx / expectedPx);
 		setIsCalibrationOpen(false);
-	}, [actualLengthInput, calibrationUnit, dpi, referenceLinePx]);
+	}, [actualLengthInput, calibrationUnit, dpi, onScaleChange, referenceLinePx]);
 
 	return {
-		scale,
 		isCalibrationOpen,
 		calibrationUnit,
 		actualLengthInput,

@@ -9,6 +9,7 @@ const opts: Parameters<typeof defineConfig>[0] = {
 			cssModules: true,
 		},
 	},
+	base: "/",
 };
 
 // https://vite.dev/config/

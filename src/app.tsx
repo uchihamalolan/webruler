@@ -5,15 +5,14 @@ import { ConfigPanel } from "./components/ConfigPanel";
 import { RulerView } from "./components/RulerView";
 import { useCalibration } from "./hooks/useCalibration";
 import { useDpi } from "./hooks/useDpi";
+import { useSettings } from "./hooks/useSettings";
 import { useViewportLength } from "./hooks/useViewportLength";
 import { getTicks } from "./lib/ruler";
-import type { Orientation, Theme, Unit } from "./types";
 
 export function App() {
-	const [unit, setUnit] = useState<Unit>("cm");
-	const [orientation, setOrientation] = useState<Orientation>("horizontal");
-	const [theme, setTheme] = useState<Theme>("frappe");
 	const [isConfigOpen, setIsConfigOpen] = useState(true);
+	const { unit, orientation, theme, scale, setUnit, setOrientation, setTheme, setScale } =
+		useSettings();
 
 	useEffect(() => {
 		document.documentElement.dataset.theme = theme;
@@ -22,7 +21,6 @@ export function App() {
 	const dpi = useDpi();
 	const viewportLength = useViewportLength(orientation);
 	const {
-		scale,
 		isCalibrationOpen,
 		calibrationUnit,
 		actualLengthInput,
@@ -32,7 +30,7 @@ export function App() {
 		setCalibrationUnit,
 		setActualLengthInput,
 		applyCalibration,
-	} = useCalibration(dpi, unit);
+	} = useCalibration(dpi, unit, setScale);
 
 	const pxPerCm = (dpi / 2.54) * scale;
 	const pxPerInch = dpi * scale;
