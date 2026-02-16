@@ -1,0 +1,2 @@
+export const CM_CALIBRATION_LENGTH = 15;
+export const INCH_CALIBRATION_LENGTH = 6;

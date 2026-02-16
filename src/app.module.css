@@ -1,0 +1,40 @@
+.appShell {
+	position: relative;
+	min-block-size: 100dvb;
+	padding-block: var(--space-40) var(--space-8);
+	padding-inline: var(--space-6);
+}
+
+.settingsButton {
+	position: fixed;
+	inset-inline-end: var(--space-5);
+	inset-block-end: var(--space-5);
+	inline-size: var(--space-10);
+	block-size: var(--space-10);
+	border: var(--border-thin) solid transparent;
+	border-radius: 50%;
+	background: var(--theme-mauve);
+	color: var(--theme-crust);
+	font-size: 1.3rem;
+	line-height: 1;
+	box-shadow: var(--panel-shadow);
+	z-index: 20;
+	cursor: pointer;
+	transition:
+		background-color 120ms ease,
+		border-color 120ms ease,
+		transform 120ms ease;
+}
+
+.settingsButton:hover,
+.settingsButton:focus-visible {
+	transform: translateY(-0.0625rem);
+	filter: brightness(1.05);
+}
+
+@media (max-width: 45rem) {
+	.appShell {
+		padding-block: 5.125rem 5.25rem;
+		padding-inline: 0.875rem;
+	}
+}

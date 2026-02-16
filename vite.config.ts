@@ -1,7 +1,15 @@
-import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
+import { defineConfig } from "vite";
+
+const opts: Parameters<typeof defineConfig>[0] = {
+	plugins: [preact()],
+	css: {
+		transformer: "lightningcss",
+		lightningcss: {
+			cssModules: true,
+		},
+	},
+};
 
 // https://vite.dev/config/
-export default defineConfig({
-	plugins: [preact()],
-});
+export default defineConfig(opts);

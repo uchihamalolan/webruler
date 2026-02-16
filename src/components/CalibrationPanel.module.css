@@ -1,0 +1,100 @@
+.calibrationCard {
+	max-inline-size: min(43.75rem, calc(100vi - 2.5rem));
+	margin-block-start: var(--space-7);
+	margin-inline: auto;
+	padding: 1.125rem;
+	border-radius: var(--radius-md);
+	background: color-mix(in srgb, var(--theme-surface0) 84%, black 16%);
+	border: var(--border-thin) solid color-mix(in srgb, var(--theme-overlay0) 65%, transparent);
+	box-shadow: var(--panel-shadow);
+}
+
+.calibrationCard h3 {
+	margin: 0;
+	font-size: 1rem;
+	color: var(--theme-mauve);
+}
+
+.calibrationCard p {
+	margin-block: 0.625rem var(--space-3);
+	color: var(--theme-subtext0);
+	font-size: 0.93rem;
+}
+
+.testLine {
+	block-size: 0.25rem;
+	max-inline-size: 100%;
+	background: var(--theme-mauve);
+	border-radius: var(--radius-lg);
+	margin-block: 0.875rem 1.125rem;
+}
+
+.calibrationControls {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(2, minmax(8.75rem, 13.75rem));
+	align-items: end;
+}
+
+.calibrationControls label {
+	display: grid;
+	gap: 0.375rem;
+}
+
+.calibrationControls span {
+	font-size: 0.78rem;
+	font-weight: 600;
+	color: var(--theme-subtext0);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.input,
+.button {
+	border: var(--border-thin) solid color-mix(in srgb, var(--theme-overlay0) 65%, transparent);
+	border-radius: var(--radius-sm);
+	padding-block: var(--space-2);
+	padding-inline: 0.625rem;
+	background: var(--theme-surface1);
+	color: var(--theme-text);
+	font-size: 0.94rem;
+	font-family: inherit;
+}
+
+.button {
+	cursor: pointer;
+	transition: background-color 120ms ease, border-color 120ms ease,
+		transform 120ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+	border-color: var(--theme-lavender);
+	background: color-mix(in srgb, var(--theme-surface1) 70%, var(--theme-lavender) 30%);
+}
+
+.buttonRow {
+	display: flex;
+	gap: var(--space-2);
+	margin-block-start: 0.875rem;
+	max-inline-size: 20rem;
+}
+
+.buttonRow .button {
+	flex: 1;
+}
+
+.active {
+	background: color-mix(in srgb, var(--theme-mauve) 35%, var(--theme-surface1) 65%);
+	border-color: color-mix(in srgb, var(--theme-mauve) 65%, white 35%);
+}
+
+@media (max-width: 45rem) {
+	.calibrationControls {
+		grid-template-columns: 1fr;
+	}
+
+	.buttonRow {
+		max-inline-size: none;
+	}
+}
